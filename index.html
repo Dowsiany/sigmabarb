@@ -7,7 +7,7 @@
   <meta name="description" content="Sigma Barbershop w Rzeszowie — nowoczesny salon barberski z oceną 5.0/5 na podstawie 266 opinii. Strzyżenie, broda, combo i wygodna rezerwacja online przez Booksy." />
   <meta property="og:title" content="Sigma Barbershop — Rzeszów" />
   <meta property="og:description" content="Najwyższa jakość strzyżenia w Rzeszowie. 5.0/5 z 266 opinii, wygodna rezerwacja przez Booksy." />
-  <meta property="og:image" content="images/logo.jpg" />
+  <meta property="og:image" content="images/logo.png" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#12100d" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,6 @@
       transform: translateY(-4px);
       border-color: rgba(198,155,109,0.34);
     }
-    /* Galeria salon — auto-scroll */
     .salon-gallery {
       display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
@@ -77,9 +76,6 @@
       object-fit: cover; border-radius: 1.4rem; scroll-snap-align: start;
       border: 1px solid rgba(198,155,109,0.14);
     }
-    /* Avatar fallback */
-    .avatar-wrap { position: relative; }
-    .avatar-wrap img { display: block; }
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
@@ -99,7 +95,7 @@
       <!-- LOGO -->
       <a href="#start" class="flex items-center gap-3" aria-label="Sigma Barbershop — strona główna">
         <img
-          src="images/logo.jpg"
+          src="images/logo.png"
           alt="Sigma Barbershop logo"
           width="52" height="52"
           class="h-13 w-13 rounded-full object-cover border border-brand/30"
@@ -137,7 +133,7 @@
         <div class="reveal">
           <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-brand/25 bg-brand/10 px-4 py-2 text-sm text-accent">
             <span class="h-2 w-2 rounded-full bg-brand"></span>
-            5.0 / 5 gwiazdek • 266 opinii w Booksy
+            5.0 / 5 gwiazdek • 266 opinii w Booksy
           </div>
           <h1 class="max-w-4xl font-display text-5xl leading-[0.92] text-ink sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
             Najwyższa jakość strzyżenia w Rzeszowie.
@@ -175,13 +171,12 @@
           </div>
         </div>
 
-        <!-- HERO CARD z pierwszym zdjęciem salonu -->
+        <!-- HERO CARD -->
         <div class="reveal lg:justify-self-end">
           <div class="glass relative overflow-hidden rounded-[2rem] shadow-soft">
-            <!-- zdjęcie salonu jako hero -->
             <div class="relative h-72 w-full overflow-hidden sm:h-80">
               <img
-                src="images/salon1.jpg"
+                src="images/salon1.png"
                 alt="Wnętrze Sigma Barbershop — stanowiska pracy"
                 width="600" height="400"
                 class="h-full w-full object-cover"
@@ -194,7 +189,6 @@
                 <span>Rzeszów</span>
               </div>
             </div>
-            <!-- info pod zdjęciem -->
             <div class="grid gap-4 p-5 sm:grid-cols-2">
               <div class="rounded-[1.4rem] border border-brand/20 bg-brand/10 p-4">
                 <p class="text-xs uppercase tracking-[0.24em] text-muted">Top usługa</p>
@@ -224,9 +218,9 @@
         <div class="reveal mb-12">
           <p class="mb-4 text-xs uppercase tracking-[0.32em] text-muted">Zajrzyj do środka</p>
           <div class="salon-gallery">
-            <img src="images/salon1.jpg" alt="Sigma Barbershop — stanowiska" loading="lazy" width="380" height="260" />
-            <img src="images/salon2.jpg" alt="Sigma Barbershop — wnętrze" loading="lazy" width="380" height="260" />
-            <img src="images/salon3.jpg" alt="Sigma Barbershop — strefa klienta" loading="lazy" width="380" height="260" />
+            <img src="images/salon1.png" alt="Sigma Barbershop — stanowiska" loading="lazy" width="380" height="260" />
+            <img src="images/salon2.png" alt="Sigma Barbershop — wnętrze" loading="lazy" width="380" height="260" />
+            <img src="images/salon3.png" alt="Sigma Barbershop — strefa klienta" loading="lazy" width="380" height="260" />
           </div>
         </div>
 
@@ -253,12 +247,12 @@
             </div>
           </div>
 
-          <!-- KARTY BARBERÓW ZE ZDOJĘCIAMI -->
+          <!-- KARTY BARBERÓW -->
           <div class="grid gap-5 md:grid-cols-2">
             <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
               <div class="relative h-52 w-full overflow-hidden">
                 <img
-                  src="images/lukasz.jpg"
+                  src="images/lukasz.png"
                   alt="Łukasz — barber w Sigma Barbershop"
                   width="300" height="200"
                   class="h-full w-full object-cover object-top"
@@ -277,7 +271,7 @@
             <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
               <div class="relative h-52 w-full overflow-hidden">
                 <img
-                  src="images/bartek.jpg"
+                  src="images/bartek.png"
                   alt="Bartek — barber w Sigma Barbershop"
                   width="300" height="200"
                   class="h-full w-full object-cover object-top"
@@ -382,11 +376,9 @@
         <div class="mt-12 grid gap-5 lg:grid-cols-3">
 
           <article class="testimonial-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
-            <!-- zdjęcie klienta -->
             <div class="relative h-36 w-full overflow-hidden">
-              <img src="images/klient1.jpg" alt="Klient Dominik" width="400" height="144"
-                class="h-full w-full object-cover"
-                loading="lazy"
+              <img src="images/klient1.png" alt="Klient Dominik" width="400" height="144"
+                class="h-full w-full object-cover" loading="lazy"
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
@@ -402,9 +394,8 @@
 
           <article class="testimonial-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
             <div class="relative h-36 w-full overflow-hidden">
-              <img src="images/klient2.jpg" alt="Klient Dawid" width="400" height="144"
-                class="h-full w-full object-cover"
-                loading="lazy"
+              <img src="images/klient2.png" alt="Klient Dawid" width="400" height="144"
+                class="h-full w-full object-cover" loading="lazy"
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
@@ -420,9 +411,8 @@
 
           <article class="testimonial-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
             <div class="relative h-36 w-full overflow-hidden">
-              <img src="images/klient3.jpg" alt="Klient Wojtek" width="400" height="144"
-                class="h-full w-full object-cover"
-                loading="lazy"
+              <img src="images/klient3.png" alt="Klient Wojtek" width="400" height="144"
+                class="h-full w-full object-cover" loading="lazy"
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
