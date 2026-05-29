@@ -7,6 +7,7 @@
   <meta name="description" content="Sigma Barbershop w Rzeszowie — nowoczesny salon barberski z oceną 5.0/5 na podstawie 266 opinii. Strzyżenie, broda, combo i wygodna rezerwacja online przez Booksy." />
   <meta property="og:title" content="Sigma Barbershop — Rzeszów" />
   <meta property="og:description" content="Najwyższa jakość strzyżenia w Rzeszowie. 5.0/5 z 266 opinii, wygodna rezerwacja przez Booksy." />
+  <meta property="og:image" content="images/logo.jpg" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#12100d" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,20 +47,13 @@
         radial-gradient(circle at top, rgba(198,155,109,0.08), transparent 25%),
         linear-gradient(180deg, #12100d 0%, #15120f 45%, #0f0d0b 100%);
     }
-    .section-shell {
-      position: relative;
-      isolation: isolate;
-    }
+    .section-shell { position: relative; isolation: isolate; }
     .section-shell::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background-image:
         linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.08;
-      pointer-events: none;
+      background-size: 40px 40px; opacity: 0.08; pointer-events: none;
       mask-image: linear-gradient(180deg, transparent, black 12%, black 88%, transparent);
       z-index: -1;
     }
@@ -68,32 +62,29 @@
       border: 1px solid rgba(198,155,109,0.14);
       backdrop-filter: blur(10px);
     }
-    .service-card:hover,
-    .testimonial-card:hover,
-    .team-card:hover {
+    .service-card:hover, .testimonial-card:hover, .team-card:hover {
       transform: translateY(-4px);
       border-color: rgba(198,155,109,0.34);
     }
-    .hero-image {
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.48)),
-        radial-gradient(circle at 50% 15%, rgba(198,155,109,0.18), transparent 30%),
-        linear-gradient(135deg, #271f18 0%, #17130f 45%, #0d0b09 100%);
+    /* Galeria salon — auto-scroll */
+    .salon-gallery {
+      display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
     }
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .7s ease, transform .7s ease;
+    .salon-gallery::-webkit-scrollbar { display: none; }
+    .salon-gallery img {
+      flex-shrink: 0; width: 100%; max-width: 380px; height: 260px;
+      object-fit: cover; border-radius: 1.4rem; scroll-snap-align: start;
+      border: 1px solid rgba(198,155,109,0.14);
     }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Avatar fallback */
+    .avatar-wrap { position: relative; }
+    .avatar-wrap img { display: block; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
       .reveal, .reveal.is-visible, .service-card:hover, .testimonial-card:hover, .team-card:hover {
-        transition: none;
-        transform: none;
-        opacity: 1;
+        transition: none; transform: none; opacity: 1;
       }
     }
   </style>
@@ -101,42 +92,52 @@
 <body class="text-ink font-body selection:bg-brand/30 selection:text-white">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-black">Przejdź do treści</a>
 
+  <!-- HEADER -->
   <header class="sticky top-0 z-40 border-b border-line/80 bg-[#120f0d]/90 backdrop-blur">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+
+      <!-- LOGO -->
       <a href="#start" class="flex items-center gap-3" aria-label="Sigma Barbershop — strona główna">
-        <span class="flex h-11 w-11 items-center justify-center rounded-full border border-brand/40 bg-brand/10 text-brand">
-          <svg viewBox="0 0 64 64" aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="3">
-            <path d="M18 16h28"/>
-            <path d="M24 16v10c0 10 6 16 8 18 2-2 8-8 8-18V16"/>
-            <path d="M22 48c4-3 16-3 20 0"/>
-            <path d="M27 54h10"/>
-          </svg>
-        </span>
+        <img
+          src="images/logo.jpg"
+          alt="Sigma Barbershop logo"
+          width="52" height="52"
+          class="h-13 w-13 rounded-full object-cover border border-brand/30"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <span
+          style="display:none"
+          class="h-13 w-13 flex items-center justify-center rounded-full border border-brand/40 bg-brand/10 text-brand text-xl font-bold"
+          aria-hidden="true">S</span>
         <div>
-          <p class="font-display text-2xl leading-none tracking-[0.12em] text-ink">SIGMA</p>
-          <p class="text-[0.7rem] uppercase tracking-[0.35em] text-muted">Barbershop • Rzeszów</p>
+          <p class="font-display text-2xl leading-none tracking-[0.10em] text-ink">SIGMA BARBERSHOP</p>
+          <p class="text-[0.68rem] uppercase tracking-[0.32em] text-muted">Rzeszów</p>
         </div>
       </a>
 
       <nav class="hidden items-center gap-8 text-sm font-medium text-muted lg:flex">
-        <a href="#o-nas" class="hover:text-ink">O nas</a>
-        <a href="#cennik" class="hover:text-ink">Cennik</a>
-        <a href="#opinie" class="hover:text-ink">Opinie</a>
-        <a href="#kontakt" class="hover:text-ink">Kontakt</a>
+        <a href="#o-nas" class="hover:text-ink transition-colors">O nas</a>
+        <a href="#cennik" class="hover:text-ink transition-colors">Cennik</a>
+        <a href="#opinie" class="hover:text-ink transition-colors">Opinie</a>
+        <a href="#kontakt" class="hover:text-ink transition-colors">Kontakt</a>
       </nav>
 
-      <a href="https://booksy.com/pl-pl/" target="_blank" rel="noopener noreferrer" class="rounded-full border border-brand/50 bg-brand px-5 py-3 text-sm font-semibold text-[#120f0d] shadow-gold transition hover:bg-[#d8ae7d]">Zarezerwuj na Booksy</a>
+      <a href="https://booksy.com/pl-pl/276971_sigma-barbershop_barber-shop_10729_rzeszow#ba_s=seo" target="_blank" rel="noopener noreferrer"
+        class="rounded-full border border-brand/50 bg-brand px-5 py-3 text-sm font-semibold text-[#120f0d] shadow-gold transition hover:bg-[#d8ae7d]">
+        Zarezerwuj na Booksy
+      </a>
     </div>
   </header>
 
   <main id="main">
+
     <!-- HERO -->
     <section id="start" class="section-shell overflow-hidden">
       <div class="mx-auto grid min-h-[92vh] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:py-20">
         <div class="reveal">
           <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-brand/25 bg-brand/10 px-4 py-2 text-sm text-accent">
             <span class="h-2 w-2 rounded-full bg-brand"></span>
-            5.0 / 5 gwiazdek • 266 opinii w Booksy
+            5.0 / 5 gwiazdek • 266 opinii w Booksy
           </div>
           <h1 class="max-w-4xl font-display text-5xl leading-[0.92] text-ink sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
             Najwyższa jakość strzyżenia w Rzeszowie.
@@ -144,16 +145,16 @@
           <p class="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
             Sigma Barbershop to nowoczesny salon dla mężczyzn, którzy oczekują precyzji, stylu i swobodnej atmosfery. Strzyżenie, broda i dopracowane detale — bez pośpiechu, za to z efektem, który widać od razu.
           </p>
-
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a href="https://booksy.com/pl-pl/" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[52px] items-center justify-center rounded-full bg-brand px-7 py-4 text-base font-semibold text-[#120f0d] shadow-gold transition hover:bg-[#d8ae7d]">
+            <a href="https://booksy.com/pl-pl/276971_sigma-barbershop_barber-shop_10729_rzeszow#ba_s=seo" target="_blank" rel="noopener noreferrer"
+              class="inline-flex min-h-[52px] items-center justify-center rounded-full bg-brand px-7 py-4 text-base font-semibold text-[#120f0d] shadow-gold transition hover:bg-[#d8ae7d]">
               Zarezerwuj wizytę na Booksy
             </a>
-            <a href="#cennik" class="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-4 text-base font-semibold text-ink transition hover:border-brand/40 hover:bg-brand/10">
+            <a href="#cennik"
+              class="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-4 text-base font-semibold text-ink transition hover:border-brand/40 hover:bg-brand/10">
               Zobacz usługi i ceny
             </a>
           </div>
-
           <div class="mt-10 grid gap-4 sm:grid-cols-3">
             <div class="rounded-3xl border border-white/8 bg-white/5 p-5">
               <p class="text-xs uppercase tracking-[0.28em] text-muted">Adres</p>
@@ -161,41 +162,53 @@
             </div>
             <div class="rounded-3xl border border-white/8 bg-white/5 p-5">
               <p class="text-xs uppercase tracking-[0.28em] text-muted">Godziny</p>
-              <p class="mt-2 text-base font-medium text-ink">Pon. – Sob. 10:00–21:00</p>
+              <p class="mt-1 text-sm font-medium text-ink">Pon.–Śr. 08:00–21:00</p>
+              <p class="mt-1 text-sm font-medium text-ink">Czw.–Pt. 10:00–21:00</p>
+              <p class="mt-1 text-sm font-medium text-ink">Sob. 09:00–21:00</p>
+              <p class="mt-1 text-sm font-medium text-ink">Niedz. 10:00–18:00</p>
             </div>
             <div class="rounded-3xl border border-white/8 bg-white/5 p-5">
-              <p class="text-xs uppercase tracking-[0.28em] text-muted">Zespół</p>
-              <p class="mt-2 text-base font-medium text-ink">Łukasz Barber • Bartek</p>
+              <p class="text-xs uppercase tracking-[0.28em] text-muted">Nasz zespół</p>
+              <p class="mt-2 text-base font-medium text-ink">Bartek</p>
+              <p class="mt-1 text-base font-medium text-ink">Łukasz</p>
             </div>
           </div>
         </div>
 
+        <!-- HERO CARD z pierwszym zdjęciem salonu -->
         <div class="reveal lg:justify-self-end">
-          <div class="hero-image glass relative overflow-hidden rounded-[2rem] p-6 shadow-soft sm:p-8">
-            <div class="absolute inset-x-6 top-6 flex items-center justify-between rounded-full border border-white/10 bg-black/20 px-4 py-3 text-xs uppercase tracking-[0.26em] text-accent">
-              <span>Craft barbering</span>
-              <span>Rzeszów</span>
-            </div>
-            <div class="mt-20 grid gap-5">
-              <div class="rounded-[1.7rem] border border-white/10 bg-black/20 p-6">
-                <p class="text-xs uppercase tracking-[0.26em] text-muted">Dlaczego klienci wracają</p>
-                <ul class="mt-4 space-y-3 text-base text-ink">
-                  <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand"></span><span>Perfekcyjne wykończenie i dbałość o detale.</span></li>
-                  <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand"></span><span>Szeroki grafik i elastyczne godziny pracy.</span></li>
-                  <li class="flex items-start gap-3"><span class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand"></span><span>Atmosfera premium bez zbędnego dystansu.</span></li>
-                </ul>
+          <div class="glass relative overflow-hidden rounded-[2rem] shadow-soft">
+            <!-- zdjęcie salonu jako hero -->
+            <div class="relative h-72 w-full overflow-hidden sm:h-80">
+              <img
+                src="images/salon1.jpg"
+                alt="Wnętrze Sigma Barbershop — stanowiska pracy"
+                width="600" height="400"
+                class="h-full w-full object-cover"
+                loading="eager"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#271f18,#17130f)'; this.style.display='none';"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#12100d] via-transparent to-transparent"></div>
+              <div class="absolute inset-x-4 top-4 flex items-center justify-between rounded-full border border-white/10 bg-black/40 px-4 py-2.5 text-xs uppercase tracking-[0.24em] text-accent backdrop-blur-sm">
+                <span>Craft barbering</span>
+                <span>Rzeszów</span>
               </div>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <div class="rounded-[1.5rem] border border-brand/20 bg-brand/10 p-5">
-                  <p class="text-xs uppercase tracking-[0.26em] text-muted">Top usługa</p>
-                  <p class="mt-2 font-display text-3xl text-ink">Combo</p>
-                  <p class="mt-1 text-sm text-muted">Strzyżenie klasyczne + golenie brody</p>
-                  <p class="mt-4 text-lg font-semibold text-brand">120 zł • 55 min</p>
-                </div>
-                <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
-                  <p class="text-xs uppercase tracking-[0.26em] text-muted">Udogodnienia</p>
-                  <p class="mt-3 text-sm leading-7 text-ink">Parking dla klientów<br>Karty płatnicze<br>Przyjazne dzieciom</p>
-                </div>
+            </div>
+            <!-- info pod zdjęciem -->
+            <div class="grid gap-4 p-5 sm:grid-cols-2">
+              <div class="rounded-[1.4rem] border border-brand/20 bg-brand/10 p-4">
+                <p class="text-xs uppercase tracking-[0.24em] text-muted">Top usługa</p>
+                <p class="mt-1 font-display text-3xl text-ink">Combo</p>
+                <p class="mt-1 text-xs text-muted">Strzyżenie + golenie brody</p>
+                <p class="mt-3 text-base font-semibold text-brand">120 zł • 55 min</p>
+              </div>
+              <div class="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
+                <p class="text-xs uppercase tracking-[0.24em] text-muted">Udogodnienia</p>
+                <ul class="mt-2 space-y-1 text-sm text-ink">
+                  <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Parking</li>
+                  <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Karty płatnicze</li>
+                  <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Przyjazne dzieciom</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -203,9 +216,20 @@
       </div>
     </section>
 
-    <!-- O NAS -->
+    <!-- O NAS + GALERIA -->
     <section id="o-nas" class="section-shell border-y border-line/70 py-20 sm:py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- GALERIA SALONU -->
+        <div class="reveal mb-12">
+          <p class="mb-4 text-xs uppercase tracking-[0.32em] text-muted">Zajrzyj do środka</p>
+          <div class="salon-gallery">
+            <img src="images/salon1.jpg" alt="Sigma Barbershop — stanowiska" loading="lazy" width="380" height="260" />
+            <img src="images/salon2.jpg" alt="Sigma Barbershop — wnętrze" loading="lazy" width="380" height="260" />
+            <img src="images/salon3.jpg" alt="Sigma Barbershop — strefa klienta" loading="lazy" width="380" height="260" />
+          </div>
+        </div>
+
         <div class="reveal grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p class="text-sm uppercase tracking-[0.32em] text-brand">O salonie</p>
@@ -229,18 +253,45 @@
             </div>
           </div>
 
+          <!-- KARTY BARBERÓW ZE ZDOJĘCIAMI -->
           <div class="grid gap-5 md:grid-cols-2">
-            <article class="team-card glass rounded-[1.8rem] p-7 transition duration-300">
-              <p class="text-xs uppercase tracking-[0.28em] text-brand">Zespół</p>
-              <h3 class="mt-3 font-display text-4xl text-ink">Łukasz</h3>
-              <p class="mt-1 text-sm font-medium uppercase tracking-[0.24em] text-muted">Łukasz Barber</p>
-              <p class="mt-5 text-base leading-7 text-muted">Barber stawiający na czyste linie, proporcje i dopracowane wykończenie. Dla klientów, którzy chcą wyjść z fryzurą dopasowaną do stylu życia, a nie przypadkiem.</p>
+            <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
+              <div class="relative h-52 w-full overflow-hidden">
+                <img
+                  src="images/lukasz.jpg"
+                  alt="Łukasz — barber w Sigma Barbershop"
+                  width="300" height="200"
+                  class="h-full w-full object-cover object-top"
+                  loading="lazy"
+                  onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
+              </div>
+              <div class="p-6">
+                <p class="text-xs uppercase tracking-[0.28em] text-brand">Zespół</p>
+                <h3 class="mt-2 font-display text-3xl text-ink">Łukasz</h3>
+                <p class="mt-1 text-xs font-medium uppercase tracking-[0.24em] text-muted">Barber</p>
+                <p class="mt-4 text-sm leading-7 text-muted">Barber stawiający na czyste linie, proporcje i dopracowane wykończenie. Dla klientów, którzy chcą wyjść z fryzurą dopasowaną do stylu życia.</p>
+              </div>
             </article>
-            <article class="team-card glass rounded-[1.8rem] p-7 transition duration-300">
-              <p class="text-xs uppercase tracking-[0.28em] text-brand">Zespół</p>
-              <h3 class="mt-3 font-display text-4xl text-ink">Bartek</h3>
-              <p class="mt-1 text-sm font-medium uppercase tracking-[0.24em] text-muted">Barber</p>
-              <p class="mt-5 text-base leading-7 text-muted">Perfekcjonista ceniony za dbałość o detale i konsekwentnie wysoki poziom każdej wizyty. Klienci wracają i polecają go wprost z imienia.</p>
+            <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
+              <div class="relative h-52 w-full overflow-hidden">
+                <img
+                  src="images/bartek.jpg"
+                  alt="Bartek — barber w Sigma Barbershop"
+                  width="300" height="200"
+                  class="h-full w-full object-cover object-top"
+                  loading="lazy"
+                  onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
+              </div>
+              <div class="p-6">
+                <p class="text-xs uppercase tracking-[0.28em] text-brand">Zespół</p>
+                <h3 class="mt-2 font-display text-3xl text-ink">Bartek</h3>
+                <p class="mt-1 text-xs font-medium uppercase tracking-[0.24em] text-muted">Barber</p>
+                <p class="mt-4 text-sm leading-7 text-muted">Perfekcjonista ceniony za dbałość o detale i konsekwentnie wysoki poziom każdej wizyty. Klienci wracają i polecają go wprost z imienia.</p>
+              </div>
             </article>
           </div>
         </div>
@@ -256,85 +307,63 @@
             <h2 class="mt-4 font-display text-4xl text-ink sm:text-5xl">Usługi stworzone pod wygodną rezerwację i konkretny efekt.</h2>
             <p class="mt-5 max-w-2xl text-lg leading-8 text-muted">Przejrzyste ceny, jasny czas trwania i szybka decyzja.</p>
           </div>
-          <a href="https://booksy.com/pl-pl/" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[52px] items-center justify-center rounded-full border border-brand/40 bg-brand/10 px-7 py-4 text-base font-semibold text-accent transition hover:bg-brand hover:text-[#120f0d]">
+          <a href="https://booksy.com/pl-pl/276971_sigma-barbershop_barber-shop_10729_rzeszow#ba_s=seo" target="_blank" rel="noopener noreferrer"
+            class="inline-flex min-h-[52px] items-center justify-center rounded-full border border-brand/40 bg-brand/10 px-7 py-4 text-base font-semibold text-accent transition hover:bg-brand hover:text-[#120f0d]">
             Umów wizytę
           </a>
         </div>
-
         <div class="mt-10 grid gap-5 lg:grid-cols-2">
           <article class="service-card glass rounded-[1.8rem] p-6 transition duration-300">
             <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-semibold text-ink">Strzyżenie klasyczne</h3>
-                <p class="mt-2 text-sm leading-6 text-muted">Włosy krótkie i średnie.</p>
-              </div>
-              <p class="text-lg font-semibold text-brand whitespace-nowrap">80,00 zł</p>
+              <div><h3 class="text-xl font-semibold text-ink">Strzyżenie klasyczne</h3><p class="mt-2 text-sm leading-6 text-muted">Włosy krótkie i średnie.</p></div>
+              <p class="whitespace-nowrap text-lg font-semibold text-brand">80,00 zł</p>
             </div>
             <p class="mt-5 text-sm uppercase tracking-[0.22em] text-muted">40 min</p>
           </article>
-
           <article class="service-card glass rounded-[1.8rem] p-6 transition duration-300">
             <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-semibold text-ink">Strzyżenie klasyczne</h3>
-                <p class="mt-2 text-sm leading-6 text-muted">Wariant rozszerzony, cena zależna od zakresu.</p>
-              </div>
-              <p class="text-lg font-semibold text-brand whitespace-nowrap">od 80,00 zł+</p>
+              <div><h3 class="text-xl font-semibold text-ink">Strzyżenie klasyczne</h3><p class="mt-2 text-sm leading-6 text-muted">Wariant rozszerzony, cena zależna od zakresu.</p></div>
+              <p class="whitespace-nowrap text-lg font-semibold text-brand">od 80,00 zł+</p>
             </div>
             <p class="mt-5 text-sm uppercase tracking-[0.22em] text-muted">40 min</p>
           </article>
-
-          <article class="service-card glass rounded-[1.8rem] p-6 transition duration-300 border-brand/25 bg-brand/10">
+          <article class="service-card glass rounded-[1.8rem] border-brand/25 bg-brand/10 p-6 transition duration-300">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-xl font-semibold text-ink">Strzyżenie klasyczne + golenie brody <span class="ml-2 rounded-full bg-brand/20 px-2 py-0.5 text-xs font-semibold uppercase tracking-widest text-brand">Combo</span></h3>
+                <h3 class="text-xl font-semibold text-ink">Strzyżenie klasyczne + golenie brody
+                  <span class="ml-2 rounded-full bg-brand/20 px-2 py-0.5 text-xs font-semibold uppercase tracking-widest text-brand">Combo</span>
+                </h3>
                 <p class="mt-2 text-sm leading-6 text-muted">Pełne odświeżenie w jednej wizycie.</p>
               </div>
-              <p class="text-lg font-semibold text-brand whitespace-nowrap">120,00 zł</p>
+              <p class="whitespace-nowrap text-lg font-semibold text-brand">120,00 zł</p>
             </div>
             <p class="mt-5 text-sm uppercase tracking-[0.22em] text-muted">55 min</p>
           </article>
-
           <article class="service-card glass rounded-[1.8rem] p-6 transition duration-300">
             <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-semibold text-ink">Strzyżenie włosów + strzyżenie brody</h3>
-                <p class="mt-2 text-sm leading-6 text-muted">Usługa rozszerzona dla pełnej stylizacji.</p>
-              </div>
-              <p class="text-lg font-semibold text-brand whitespace-nowrap">od 120,00 zł+</p>
+              <div><h3 class="text-xl font-semibold text-ink">Strzyżenie włosów + strzyżenie brody</h3><p class="mt-2 text-sm leading-6 text-muted">Usługa rozszerzona dla pełnej stylizacji.</p></div>
+              <p class="whitespace-nowrap text-lg font-semibold text-brand">od 120,00 zł+</p>
             </div>
             <p class="mt-5 text-sm uppercase tracking-[0.22em] text-muted">1 godz. 10 min</p>
           </article>
-
           <article class="service-card glass rounded-[1.8rem] p-6 transition duration-300">
             <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-semibold text-ink">Strzyżenie brody</h3>
-                <p class="mt-2 text-sm leading-6 text-muted">Szybkie odświeżenie formy i linii brody.</p>
-              </div>
-              <p class="text-lg font-semibold text-brand whitespace-nowrap">60,00 zł</p>
+              <div><h3 class="text-xl font-semibold text-ink">Strzyżenie brody</h3><p class="mt-2 text-sm leading-6 text-muted">Szybkie odświeżenie formy i linii brody.</p></div>
+              <p class="whitespace-nowrap text-lg font-semibold text-brand">60,00 zł</p>
             </div>
             <p class="mt-5 text-sm uppercase tracking-[0.22em] text-muted">25 min</p>
           </article>
-
           <article class="service-card glass rounded-[1.8rem] p-6 transition duration-300">
             <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-semibold text-ink">Golenie i trymowanie brody</h3>
-                <p class="mt-2 text-sm leading-6 text-muted">Dokładne dopracowanie kształtu i czystości linii.</p>
-              </div>
-              <p class="text-lg font-semibold text-brand whitespace-nowrap">od 50,00 zł+</p>
+              <div><h3 class="text-xl font-semibold text-ink">Golenie i trymowanie brody</h3><p class="mt-2 text-sm leading-6 text-muted">Dokładne dopracowanie kształtu i czystości linii.</p></div>
+              <p class="whitespace-nowrap text-lg font-semibold text-brand">od 50,00 zł+</p>
             </div>
             <p class="mt-5 text-sm uppercase tracking-[0.22em] text-muted">25 min</p>
           </article>
-
           <article class="service-card glass rounded-[1.8rem] p-6 transition duration-300 lg:col-span-2">
             <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-xl font-semibold text-ink">Buzz cut</h3>
-                <p class="mt-2 text-sm leading-6 text-muted">Minimalistyczna, czysta forma dla konkretnego efektu.</p>
-              </div>
-              <p class="text-lg font-semibold text-brand whitespace-nowrap">60,00 zł</p>
+              <div><h3 class="text-xl font-semibold text-ink">Buzz cut</h3><p class="mt-2 text-sm leading-6 text-muted">Minimalistyczna, czysta forma dla konkretnego efektu.</p></div>
+              <p class="whitespace-nowrap text-lg font-semibold text-brand">60,00 zł</p>
             </div>
             <p class="mt-5 text-sm uppercase tracking-[0.22em] text-muted">30 min</p>
           </article>
@@ -348,33 +377,65 @@
         <div class="reveal text-center">
           <p class="text-sm uppercase tracking-[0.32em] text-brand">Opinie klientów</p>
           <h2 class="mt-4 font-display text-4xl text-ink sm:text-5xl">Prawdziwe opinie, które mówią same za siebie.</h2>
-          <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-muted">Ocena 5.0/5 na podstawie 266 opinii w Booksy. Klienci wracają za poziom usług, atmosferę i elastyczny grafik.</p>
+          <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-muted">Ocena 5.0/5 na podstawie ponad 266 opinii w Booksy. Klienci wracają za poziom usług, atmosferę i elastyczny grafik.</p>
         </div>
-
         <div class="mt-12 grid gap-5 lg:grid-cols-3">
-          <article class="testimonial-card glass rounded-[1.8rem] p-7 transition duration-300">
-            <div class="mb-5 flex items-center gap-1 text-brand" aria-label="Ocena 5 na 5 gwiazdek">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+
+          <article class="testimonial-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
+            <!-- zdjęcie klienta -->
+            <div class="relative h-36 w-full overflow-hidden">
+              <img src="images/klient1.jpg" alt="Klient Dominik" width="400" height="144"
+                class="h-full w-full object-cover"
+                loading="lazy"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
             </div>
-            <blockquote class="text-lg leading-8 text-ink">„Aktualnie po 8 wizytach mogę z czystym sumieniem polecić. Bartek to perfekcjonista, każdy detal dopracowany do maksimum. Szeroki grafik pozwala dopasować wizytę do mojego kalendarza. Atmosfera TOP."</blockquote>
-            <p class="mt-6 text-sm font-semibold uppercase tracking-[0.26em] text-muted">Dominik</p>
+            <div class="p-7">
+              <div class="mb-4 flex items-center gap-1 text-brand" aria-label="Ocena 5 na 5 gwiazdek">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <blockquote class="text-base leading-8 text-ink">„Aktualnie po 8 wizytach mogę z czystym sumieniem polecić. Bartek to perfekcjonista, każdy detal dopracowany do maksimum. Szeroki grafik pozwala dopasować wizytę do mojego kalendarza. Atmosfera TOP."</blockquote>
+              <p class="mt-5 text-sm font-semibold uppercase tracking-[0.26em] text-muted">Dominik</p>
+            </div>
           </article>
 
-          <article class="testimonial-card glass rounded-[1.8rem] p-7 transition duration-300">
-            <div class="mb-5 flex items-center gap-1 text-brand" aria-label="Ocena 5 na 5 gwiazdek">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          <article class="testimonial-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
+            <div class="relative h-36 w-full overflow-hidden">
+              <img src="images/klient2.jpg" alt="Klient Dawid" width="400" height="144"
+                class="h-full w-full object-cover"
+                loading="lazy"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
             </div>
-            <blockquote class="text-lg leading-8 text-ink">„Strzyżenie profesjonalne, efekt końcowy lepszy niż oczekiwany. Atmosfera mega fajna."</blockquote>
-            <p class="mt-6 text-sm font-semibold uppercase tracking-[0.26em] text-muted">Dorota</p>
+            <div class="p-7">
+              <div class="mb-4 flex items-center gap-1 text-brand" aria-label="Ocena 5 na 5 gwiazdek">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <blockquote class="text-base leading-8 text-ink">„Strzyżenie profesjonalne, efekt końcowy lepszy niż oczekiwany. Atmosfera mega fajna."</blockquote>
+              <p class="mt-5 text-sm font-semibold uppercase tracking-[0.26em] text-muted">Dawid</p>
+            </div>
           </article>
 
-          <article class="testimonial-card glass rounded-[1.8rem] p-7 transition duration-300">
-            <div class="mb-5 flex items-center gap-1 text-brand" aria-label="Ocena 5 na 5 gwiazdek">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          <article class="testimonial-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
+            <div class="relative h-36 w-full overflow-hidden">
+              <img src="images/klient3.jpg" alt="Klient Wojtek" width="400" height="144"
+                class="h-full w-full object-cover"
+                loading="lazy"
+                onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
             </div>
-            <blockquote class="text-lg leading-8 text-ink">„Klasa sama w sobie."</blockquote>
-            <p class="mt-6 text-sm font-semibold uppercase tracking-[0.26em] text-muted">Wojtek</p>
+            <div class="p-7">
+              <div class="mb-4 flex items-center gap-1 text-brand" aria-label="Ocena 5 na 5 gwiazdek">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <blockquote class="text-base leading-8 text-ink">„Klasa sama w sobie."</blockquote>
+              <p class="mt-5 text-sm font-semibold uppercase tracking-[0.26em] text-muted">Wojtek</p>
+            </div>
           </article>
+
         </div>
       </div>
     </section>
@@ -393,29 +454,32 @@
               </div>
               <div>
                 <p class="text-xs uppercase tracking-[0.28em] text-muted">Godziny otwarcia</p>
-                <p class="mt-2 text-lg font-medium text-ink">Poniedziałek – Piątek / Sobota: 10:00–21:00</p>
-                <p class="mt-2 text-sm">Dopasowujemy się do potrzeb klienta — godziny pracy mogą być wydłużone.</p>
+                <div class="mt-2 space-y-1 text-sm">
+                  <p class="text-ink">Pon.–Śr.: 08:00–21:00</p>
+                  <p class="text-ink">Czw.–Pt.: 10:00–21:00</p>
+                  <p class="text-ink">Sobota: 09:00–21:00</p>
+                  <p class="text-ink">Niedziela: 10:00–18:00</p>
+                  <p class="mt-2 text-muted">Dopasowujemy się do potrzeb klienta — godziny mogą być wydłużone.</p>
+                </div>
               </div>
               <div>
                 <p class="text-xs uppercase tracking-[0.28em] text-muted">Rezerwacje</p>
                 <p class="mt-2 text-sm">Najwygodniej przez Booksy — szybko wybierzesz usługę, termin i barbera.</p>
               </div>
             </div>
-
             <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href="https://booksy.com/pl-pl/" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[52px] items-center justify-center rounded-full bg-brand px-7 py-4 text-base font-semibold text-[#120f0d] shadow-gold transition hover:bg-[#d8ae7d]">Umów wizytę</a>
-              <a href="https://maps.google.com/?q=ul.+Graniczna+4b,+35-326+Rzesz%C3%B3w" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-4 text-base font-semibold text-ink transition hover:border-brand/40 hover:bg-brand/10">Otwórz trasę</a>
+              <a href="https://booksy.com/pl-pl/276971_sigma-barbershop_barber-shop_10729_rzeszow#ba_s=seo" target="_blank" rel="noopener noreferrer"
+                class="inline-flex min-h-[52px] items-center justify-center rounded-full bg-brand px-7 py-4 text-base font-semibold text-[#120f0d] shadow-gold transition hover:bg-[#d8ae7d]">Umów wizytę</a>
+              <a href="https://maps.google.com/?q=ul.+Graniczna+4b,+35-326+Rzesz%C3%B3w" target="_blank" rel="noopener noreferrer"
+                class="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-4 text-base font-semibold text-ink transition hover:border-brand/40 hover:bg-brand/10">Otwórz trasę</a>
             </div>
           </div>
-
           <div class="reveal overflow-hidden rounded-[2rem] border border-brand/15 bg-[#14110e] shadow-soft">
             <iframe
               title="Mapa dojazdu do Sigma Barbershop — ul. Graniczna 4b, Rzeszów"
               src="https://www.google.com/maps?q=ul.%20Graniczna%204b,%2035-326%20Rzesz%C3%B3w&output=embed"
               class="h-[420px] w-full border-0 sm:h-[520px]"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen>
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
             </iframe>
           </div>
         </div>
@@ -436,7 +500,6 @@
         if (entry.isIntersecting) entry.target.classList.add('is-visible');
       });
     }, { threshold: 0.14 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
