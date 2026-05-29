@@ -67,7 +67,6 @@
       transform: translateY(-4px);
       border-color: rgba(198,155,109,0.34);
     }
-    /* Galeria salonu — 16:9, przewijana poziomo */
     .salon-gallery {
       display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
@@ -85,7 +84,6 @@
     .salon-gallery-item img {
       width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
     }
-    /* Galeria realizacji — przewijana poziomo */
     .realizacje-gallery {
       display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
@@ -194,7 +192,7 @@
         <div class="reveal lg:justify-self-end">
           <div class="glass relative overflow-hidden rounded-[2rem] shadow-soft">
             <div class="relative w-full overflow-hidden" style="aspect-ratio:16/9">
-              <img src="images/salon1.png" alt="Wnętrze Sigma Barbershop — stanowiska pracy"
+              <img src="images/salon1.jpg" alt="Wnętrze Sigma Barbershop — stanowiska pracy"
                 class="h-full w-full object-cover object-center" loading="eager"
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#271f18,#17130f)'; this.style.display='none';" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#12100d] via-transparent to-transparent"></div>
@@ -233,13 +231,13 @@
           <p class="mb-5 text-xs uppercase tracking-[0.32em] text-muted">Zajrzyj do środka</p>
           <div class="salon-gallery">
             <div class="salon-gallery-item">
-              <img src="images/salon1.png" alt="Sigma Barbershop — stanowiska" loading="lazy" />
+              <img src="images/salon1.jpg" alt="Sigma Barbershop — stanowiska" loading="lazy" />
             </div>
             <div class="salon-gallery-item">
-              <img src="images/salon2.png" alt="Sigma Barbershop — wnętrze" loading="lazy" />
+              <img src="images/salon2.jpg" alt="Sigma Barbershop — wnętrze" loading="lazy" />
             </div>
             <div class="salon-gallery-item">
-              <img src="images/salon3.png" alt="Sigma Barbershop — strefa klienta" loading="lazy" />
+              <img src="images/salon3.jpg" alt="Sigma Barbershop — strefa klienta" loading="lazy" />
             </div>
           </div>
         </div>
@@ -271,7 +269,7 @@
           <div class="grid gap-5 md:grid-cols-2">
             <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
               <div class="relative w-full overflow-hidden" style="aspect-ratio:3/4">
-                <img src="images/lukasz.png" alt="Łukasz — barber w Sigma Barbershop"
+                <img src="images/lukasz.jpg" alt="Łukasz — barber w Sigma Barbershop"
                   class="h-full w-full object-cover object-center" loading="lazy"
                   onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';" />
                 <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
@@ -285,7 +283,7 @@
             </article>
             <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
               <div class="relative w-full overflow-hidden" style="aspect-ratio:3/4">
-                <img src="images/bartek.png" alt="Bartek — barber w Sigma Barbershop"
+                <img src="images/bartek.jpg" alt="Bartek — barber w Sigma Barbershop"
                   class="h-full w-full object-cover object-center" loading="lazy"
                   onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';" />
                 <div class="absolute inset-0 bg-gradient-to-t from-[#181511] via-transparent to-transparent"></div>
@@ -391,13 +389,13 @@
         </div>
         <div class="reveal realizacje-gallery">
           <div class="realizacje-gallery-item">
-            <img src="images/klient1.png" alt="Realizacja Sigma Barbershop — efekt strzyżenia 1" loading="lazy" />
+            <img src="images/klient1.jpg" alt="Realizacja Sigma Barbershop — efekt strzyżenia 1" loading="lazy" />
           </div>
           <div class="realizacje-gallery-item">
-            <img src="images/klient2.png" alt="Realizacja Sigma Barbershop — efekt strzyżenia 2" loading="lazy" />
+            <img src="images/klient2.jpg" alt="Realizacja Sigma Barbershop — efekt strzyżenia 2" loading="lazy" />
           </div>
           <div class="realizacje-gallery-item">
-            <img src="images/klient3.png" alt="Realizacja Sigma Barbershop — efekt strzyżenia 3" loading="lazy" />
+            <img src="images/klient3.jpg" alt="Realizacja Sigma Barbershop — efekt strzyżenia 3" loading="lazy" />
           </div>
         </div>
       </div>
