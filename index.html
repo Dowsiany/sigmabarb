@@ -63,10 +63,12 @@
       border: 1px solid rgba(198,155,109,0.14);
       backdrop-filter: blur(10px);
     }
-    .service-card:hover, .testimonial-card:hover, .team-card:hover, .realizacja-card:hover {
+    .service-card:hover, .testimonial-card:hover, .team-card:hover {
       transform: translateY(-4px);
       border-color: rgba(198,155,109,0.34);
     }
+
+    /* GALERIA SALONU — 4:3 (zgodnie z rzeczywistymi proporcjami 4032x3024) */
     .salon-gallery {
       display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
@@ -74,8 +76,8 @@
     .salon-gallery::-webkit-scrollbar { display: none; }
     .salon-gallery-item {
       flex-shrink: 0;
-      width: min(560px, 88vw);
-      aspect-ratio: 16 / 9;
+      width: min(600px, 90vw);
+      aspect-ratio: 4 / 3;
       border-radius: 1.4rem;
       overflow: hidden;
       scroll-snap-align: start;
@@ -84,6 +86,8 @@
     .salon-gallery-item img {
       width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
     }
+
+    /* GALERIA REALIZACJI — 1:1 (zgodnie z rzeczywistymi proporcjami klient1-3) */
     .realizacje-gallery {
       display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
@@ -91,8 +95,8 @@
     .realizacje-gallery::-webkit-scrollbar { display: none; }
     .realizacje-gallery-item {
       flex-shrink: 0;
-      width: min(340px, 80vw);
-      aspect-ratio: 3 / 4;
+      width: min(380px, 82vw);
+      aspect-ratio: 1 / 1;
       border-radius: 1.4rem;
       overflow: hidden;
       scroll-snap-align: start;
@@ -101,10 +105,11 @@
     .realizacje-gallery-item img {
       width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
     }
+
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal.is-visible, .service-card:hover, .testimonial-card:hover, .team-card:hover, .realizacja-card:hover {
+      .reveal, .reveal.is-visible, .service-card:hover, .testimonial-card:hover, .team-card:hover {
         transition: none; transform: none; opacity: 1;
       }
     }
@@ -188,10 +193,10 @@
           </div>
         </div>
 
-        <!-- HERO CARD -->
+        <!-- HERO CARD — salon1 4:3 -->
         <div class="reveal lg:justify-self-end">
           <div class="glass relative overflow-hidden rounded-[2rem] shadow-soft">
-            <div class="relative w-full overflow-hidden" style="aspect-ratio:16/9">
+            <div class="relative w-full overflow-hidden" style="aspect-ratio:4/3">
               <img src="images/salon1.png" alt="Wnętrze Sigma Barbershop — stanowiska pracy"
                 class="h-full w-full object-cover object-center" loading="eager"
                 onerror="this.parentElement.style.background='linear-gradient(135deg,#271f18,#17130f)'; this.style.display='none';" />
@@ -226,6 +231,7 @@
     <section id="o-nas" class="section-shell border-y border-line/70 py-20 sm:py-24">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
+        <!-- GALERIA SALONU 4:3 -->
         <div class="reveal mb-14">
           <p class="mb-5 text-xs uppercase tracking-[0.32em] text-muted">Zajrzyj do środka</p>
           <div class="salon-gallery">
@@ -264,9 +270,10 @@
             </div>
           </div>
 
+          <!-- KARTY BARBERÓW — 1:1 (zgodnie z rzeczywistymi kwadratowymi proporcjami) -->
           <div class="grid gap-5 md:grid-cols-2">
             <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
-              <div class="relative w-full overflow-hidden" style="aspect-ratio:3/4">
+              <div class="relative w-full overflow-hidden" style="aspect-ratio:1/1">
                 <img src="images/lukasz.png" alt="Łukasz — barber w Sigma Barbershop"
                   class="h-full w-full object-cover object-center" loading="lazy"
                   onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';" />
@@ -280,7 +287,7 @@
               </div>
             </article>
             <article class="team-card glass overflow-hidden rounded-[1.8rem] transition duration-300">
-              <div class="relative w-full overflow-hidden" style="aspect-ratio:3/4">
+              <div class="relative w-full overflow-hidden" style="aspect-ratio:1/1">
                 <img src="images/bartek.png" alt="Bartek — barber w Sigma Barbershop"
                   class="h-full w-full object-cover object-center" loading="lazy"
                   onerror="this.parentElement.style.background='linear-gradient(135deg,#211c17,#15120f)'; this.style.display='none';" />
