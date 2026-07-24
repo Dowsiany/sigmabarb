@@ -1,4 +1,4 @@
-<!-- build: 2026-05-29 -->
+<!-- build: 2026-07-24 editorial redesign -->
 <!DOCTYPE html>
 <html lang="pl" data-theme="dark">
 <head>
@@ -7,13 +7,13 @@
   <title>Sigma Barbershop - Rzeszów </title>
   <meta name="description" content="Sigma Barbershop w Rzeszowie — nowoczesny salon barberski z oceną 5.0/5 na podstawie 266 opinii. Strzyżenie, broda, combo i wygodna rezerwacja online przez Booksy." />
   <meta property="og:title" content="Sigma Barbershop - Rzeszów" />
-  <meta property="og:description" content="Najwyższa jakość strzyżenia w Rzeszowie. 5.0/5 z 266 opinii, wygodna rezerwacja przez Booksy." />
+  <meta property="og:description" content="Dobre cięcie. Mocny styl. 5.0/5 z ponad 266 opinii i wygodna rezerwacja przez Booksy." />
   <meta property="og:image" content="images/logo.png" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#12100d" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -113,6 +113,60 @@
         transition: none; transform: none; opacity: 1;
       }
     }
+
+    /* 2026 editorial redesign */
+    :root { --red:#c83b2f; --paper:#eee8dd; }
+    body { background:#0a0a09; font-family:'DM Sans',sans-serif; }
+    .font-display { font-family:'Oswald',sans-serif!important; text-transform:uppercase; letter-spacing:-.035em; }
+    .section-shell::before { opacity:.025; background-size:64px 64px; }
+    .glass { background:#151513; border-color:rgba(255,255,255,.12); backdrop-filter:none; }
+    header { background:rgba(10,10,9,.92)!important; border-color:rgba(255,255,255,.12)!important; }
+    header .font-display { font-size:1.25rem!important; letter-spacing:.02em!important; }
+    .bg-brand, header a.rounded-full { background:var(--red)!important; color:#fff!important; border-radius:2px!important; border-color:var(--red)!important; }
+    .text-brand { color:#e05245!important; }
+    #start { position:relative; min-height:100svh; }
+    #start::after { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(5,5,4,.97),rgba(5,5,4,.78) 48%,rgba(5,5,4,.12)),url('images/salon1.png') center/cover; filter:saturate(.72); }
+    #start>div { min-height:100svh; grid-template-columns:1fr!important; padding-top:9rem!important; padding-bottom:4rem!important; }
+    #start h1 { max-width:950px; font-size:clamp(4.2rem,11vw,9.5rem)!important; line-height:.82!important; letter-spacing:-.055em!important; }
+    #start>div>div:last-child { display:none; }
+    #start .rounded-full { border-radius:2px!important; }
+    #start .sm\:grid-cols-3>div { background:rgba(8,8,7,.55)!important; border-radius:2px!important; border-color:rgba(255,255,255,.16)!important; backdrop-filter:blur(8px); }
+    #o-nas { padding-block:7rem!important; }
+    .salon-gallery { display:grid; grid-template-columns:1.35fr .85fr; grid-template-rows:1fr 1fr; gap:14px; overflow:visible; }
+    .salon-gallery-item { width:100%; border-radius:2px; border:0; }
+    .salon-gallery-item:first-child { grid-row:1/3; }
+    .salon-gallery-item img, .realizacje-gallery-item img { filter:saturate(.75); }
+    #o-nas>div>div:nth-child(2) { margin-top:7rem; }
+    .team-card { border-radius:2px!important; }
+    #cennik { background:var(--paper); color:#171715; padding-block:7rem!important; }
+    #cennik .text-ink { color:#171715!important; }
+    #cennik .text-muted { color:#6c675f!important; }
+    #cennik .glass { background:transparent; border:0; border-bottom:1px solid rgba(23,23,21,.22); border-radius:0!important; box-shadow:none; }
+    #cennik .service-card { padding:1.8rem .25rem!important; }
+    #cennik .service-card:hover { transform:none; padding-inline:1rem!important; }
+    #realizacje, #opinie, #kontakt { padding-block:7rem!important; }
+    .realizacje-gallery { display:grid; grid-template-columns:1.25fr 1fr 1fr; gap:14px; overflow:visible; }
+    .realizacje-gallery-item { width:100%; border-radius:2px; border:0; }
+    .realizacje-gallery-item img { transition:transform .65s ease; }
+    .realizacje-gallery-item:hover img { transform:scale(1.035); }
+    #opinie { background:#151513; }
+    .testimonial-card { border-radius:2px!important; min-height:300px; display:flex; flex-direction:column; }
+    .testimonial-card blockquote { margin-top:auto; font-size:1.08rem; }
+    #kontakt .glass, #kontakt iframe { border-radius:2px!important; }
+    .mobile-book { display:none; }
+    @media(max-width:768px){
+      header .max-w-7xl>a:first-child div { display:none; }
+      header .max-w-7xl>a:last-child { padding:.8rem 1rem!important; font-size:.72rem!important; }
+      #start::after { background:linear-gradient(0deg,rgba(5,5,4,.98),rgba(5,5,4,.48)),url('images/salon1.png') 63% center/cover; }
+      #start h1 { font-size:clamp(3.8rem,18vw,6.3rem)!important; }
+      #start .sm\:grid-cols-3 { grid-template-columns:1fr 1fr!important; }
+      #start .sm\:grid-cols-3>div:first-child { grid-column:1/-1; }
+      .salon-gallery,.realizacje-gallery { display:flex; overflow-x:auto; }
+      .salon-gallery-item { min-width:88vw; }
+      .realizacje-gallery-item { min-width:82vw; }
+      .mobile-book { position:fixed; display:flex; z-index:60; left:12px; right:12px; bottom:12px; min-height:58px; align-items:center; justify-content:center; background:var(--red); color:#fff; font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; box-shadow:0 12px 35px rgba(0,0,0,.45); }
+      footer { padding-bottom:6.5rem!important; }
+    }
   </style>
 </head>
 <body class="text-ink font-body selection:bg-brand/30 selection:text-white">
@@ -158,10 +212,10 @@
             5.0 / 5 gwiazdek • 266 opinii w Booksy
           </div>
           <h1 class="max-w-4xl font-display text-5xl leading-[0.92] text-ink sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
-            Najwyższa jakość strzyżenia w Rzeszowie.
+            Dobre cięcie.<br><span class="text-brand">Mocny styl.</span>
           </h1>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-            Sigma Barbershop to nowoczesny salon dla mężczyzn, którzy oczekują precyzji, stylu i swobodnej atmosfery. Strzyżenie, broda i dopracowane detale - wszystko bez pośpiechu, za to z efektem, który widać od razu.
+            Precyzyjny barbering bez zbędnego nadęcia. Strzyżenie, broda i detale, które robią różnicę — w samym sercu Rzeszowa.
           </p>
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
             <a href="https://booksy.com/pl-pl/276971_sigma-barbershop_barber-shop_10729_rzeszow#ba_s=seo" target="_blank" rel="noopener noreferrer"
@@ -508,6 +562,8 @@
       <p>ul. Graniczna 4b, 35-326 Rzeszów • Parking • Karty płatnicze • Przyjazne dzieciom</p>
     </div>
   </footer>
+
+  <a class="mobile-book" href="https://booksy.com/pl-pl/276971_sigma-barbershop_barber-shop_10729_rzeszow#ba_s=seo" target="_blank" rel="noopener noreferrer">Umów wizytę na Booksy ↗</a>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
